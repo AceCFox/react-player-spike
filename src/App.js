@@ -1,26 +1,53 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, {Component} from 'react';
 import './App.css';
+import ReactPlayer from 'react-player/youtube'
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+
+class App extends Component {
+  state = {
+    newUrl:'',
+    url: ''};
+
+  handleChange = (event) =>{
+    console.log('in handleChange', event.target.value);
+    this.setState({
+      ...this.state.url,
+      newUrl: event.target.value,
+    })
+
+  }//end handleChange
+
+  handleSubmit = () => {
+    console.log('in handleSubmit')
+    this.setState({
+      url: this.state.newUrl,
+      newUrl: '',
+    })
+  }//end handleSubmit
+
+  handleClear = () =>{
+    this.setState({
+      url: '',
+      newUrl: '',
+    })
+  }
+
+  render() {
+    return (
+      <div className="App">
+        <header className="App-header">
+        <h3>enter a youtube url</h3>
+          <input value = {this.state.newUrl} onChange = {this.handleChange}/>
+          <br/>
+          <button onClick = {this.handleSubmit}>watch my video!</button>
+          <br/>
+        <ReactPlayer url={this.state.url} controls ={true} />
+        <br/>
+        <button onClick = {this.handleClear}>clear</button>
+        </header>
+      </div>
+    );
+  }
 }
 
 export default App;
