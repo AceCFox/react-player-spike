@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Grid from '@material-ui/core/Grid';
 import { withStyles } from '@material-ui/core/styles';
-import Paper from '@material-ui/core/Paper';
+import {Paper, Button} from '@material-ui/core/';
 //import ReactPlayer from 'react-player/youtube'
 
 const styles = theme => ({
@@ -55,14 +55,16 @@ class ListItem extends Component {
                 </iframe>
                 </Paper>
             </Grid>
-            <Grid item xs = {12} sm={12} md ={4} lg = {6}>
+            <Grid item xs = {12} sm={12} md ={4} lg = {6} >
                 <Paper className={classes.paper}>
                     <p>Skate ipsum dolor sit amet, fakie out Zorlac impossible sponsored ollie north. 
                         Tailslide dude hang up skate or die. 
                         Fast plant ledge speed wobbles Vision lien air. 
                         Mike York kick-nose downhill lien air boned out.
                         </p>
-                    <button onClick = {this.handleDelete}>delete</button>
+                    <Button color = 'secondary' onClick = {this.handleDelete}>
+                        delete
+                    </Button>
                 </Paper>
             </Grid>
         </Grid>

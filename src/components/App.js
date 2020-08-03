@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import './App.css';
 //import ReactPlayer from 'react-player/youtube'
 import ListItem from './ListItem/ListItem';
+import Button from '@material-ui/core/Button'
 
 
 class App extends Component {
@@ -50,16 +51,20 @@ class App extends Component {
       <div className="App">
         <header className="App-header">
         <h3>enter a youtube url</h3>
-          <input value = {this.state.newUrl} onChange = {this.handleChange}/>
-          <br/>
-          <button onClick = {this.handleSubmit}>Add video to list!</button>
-          <br/>
-          {/* {JSON.stringify(this.state.urlArray)} */}
-          {this.state.urlArray.map((url, index)=>
-          <ListItem key = {index} url={url} index = {index} deleteFunction = {this.deleteFunction} />
-          )}
+        <input value = {this.state.newUrl} onChange = {this.handleChange}/>
         <br/>
-        <button onClick = {this.handleClear}>clear list</button>
+        <Button variant = "contained" onClick = {this.handleSubmit}>
+            Add video to list!
+        </Button>
+        <br/>
+        {/* {JSON.stringify(this.state.urlArray)} */}
+        {this.state.urlArray.map((url, index)=>
+        <ListItem key = {index} url={url} index = {index} deleteFunction = {this.deleteFunction} />
+        )}
+        <br/>
+        <Button variant = "outlined" color = "secondary" onClick = {this.handleClear}>
+            clear List
+         </Button>
         </header>
       </div>
     );
